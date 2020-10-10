@@ -1,4 +1,9 @@
 import React from 'react'
-
-const App = () => <div></div>
+import Nav from './components/Nav'
+import './main.scss'
+const App = () => (
+  <div className="app">
+    <Nav />
+  </div>
+)
 export default App
