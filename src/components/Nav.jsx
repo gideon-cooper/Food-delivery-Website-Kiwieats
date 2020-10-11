@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   color: {
@@ -29,9 +30,16 @@ export default function Nav() {
       <AppBar className={classes.color} position="sticky">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            Kiwi<span style={{ color: 'green' }}>Eats</span>
+            <Link to="/">
+              Kiwi<span style={{ color: 'green' }}>Eats</span>
+            </Link>
           </Typography>
-          <Button color="black">Login</Button>
+          <Link to="/login">
+            <Button color="black">Login</Button>
+          </Link>
+          <Link to="/register">
+            <Button color="black">Register</Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
