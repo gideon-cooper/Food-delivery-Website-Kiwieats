@@ -25,6 +25,7 @@ const foods = [
     description: 'its bacon',
   }),
 ]
+
 let done = 0
 for (let i = 0; i < foods.length; i++) {
   foods[i].save((err, res) => {
@@ -34,6 +35,7 @@ for (let i = 0; i < foods.length; i++) {
     }
   })
 }
+
 function exit() {
   mongoose.disconnect()
 }

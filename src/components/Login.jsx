@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import { loginUser } from '../api'
 import TextField from '@material-ui/core/TextField'
 import { Link } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
@@ -34,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Login() {
   const classes = useStyles()
 
+  const handleClick = () => {
+      loginUser()
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -67,6 +71,7 @@ export default function Login() {
 
           <Button
             type="submit"
+            onClick={handleClick}
             fullWidth
             variant="contained"
             color="primary"
