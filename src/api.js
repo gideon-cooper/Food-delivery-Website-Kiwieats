@@ -11,7 +11,7 @@ export function getFood() {
 }
 export function loginUser(userData) {
   return request
-    .post(authUrl)
+    .post(`${authUrl}login`)
     .send(userData)
     .then((res) => {
       return res.body

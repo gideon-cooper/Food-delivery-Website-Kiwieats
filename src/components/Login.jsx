@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { loginUser } from '../api'
@@ -34,9 +34,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login() {
   const classes = useStyles()
-
+  const [form, setForm] = useState({
+    email: '',
+    
+  })
   const handleClick = () => {
-      loginUser()
+    console.log('BUTTOn')
+    loginUser(form).then((res) => {
+      console.log('HEY', res)
+    })
+  }
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      email: e.target.value,
+    })
   }
   return (
     <Container component="main" maxWidth="xs">
@@ -45,48 +57,48 @@ export default function Login() {
         <Typography component="h1" variant="h5">
           Login
         </Typography>
-        <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
 
-          <Button
-            type="submit"
-            onClick={handleClick}
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Login
-          </Button>
-          <Grid container>
-            <Grid item>
-              <Link to="/register" variant="body2">
-                Don't have an account? Register
-              </Link>
-            </Grid>
+        <TextField
+          variant="outlined"
+          margin="normal"
+          onChange={handleChange}
+          required
+          fullWidth
+          id="email"
+          label="Email Address"
+          name="email"
+          autoComplete="email"
+          autoFocus
+        />
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          name="password"
+          label="Password"
+          type="password"
+          id="password"
+          autoComplete="current-password"
+        />
+
+        <Button
+          type="submit"
+          onClick={handleClick}
+          fullWidth
+          variant="contained"
+          color="primary"
+          className={classes.submit}
+        >
+          Login
+        </Button>
+        <Grid container>
+          <Grid item>
+            <Link to="/register" variant="body2">
+              Don't have an account? Register
+            </Link>
           </Grid>
-        </form>
+        </Grid>
       </div>
     </Container>
   )
