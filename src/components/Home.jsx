@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { getFood } from '../api'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container'
+import { StorefrontOutlined } from '@material-ui/icons'
 
 const useStyles = makeStyles((theme) => ({
   home: {
@@ -39,6 +41,16 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function Home() {
+  const [food, setFood] = useState([])
+  useEffect(() => {
+    getFood()
+      .then((res) => {
+        setFood(res)
+      })
+      .catch((error) => {
+        console.log('HOME API ERROR', error)
+      })
+  }, [])
   const classes = useStyles()
   return (
     <Container className={classes.home}>
