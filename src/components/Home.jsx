@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getFood } from '../api'
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
@@ -40,17 +40,6 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function Home() {
-  const [food, setFood] = useState([])
-  useEffect(() => {
-    getFood()
-      .then((res) => {
-        setFood(res)
-      })
-      .catch((error) => {
-        console.log('HOME API ERROR', error)
-      })
-  }, [])
- 
   const classes = useStyles()
   return (
     <Container className={classes.home}>
@@ -59,9 +48,11 @@ export default function Home() {
         <Typography className={classes.title} variant="h2">
           Delivered now
         </Typography>
-        <Button className={classes.button} variant="contained">
-          Order now
-        </Button>
+        <Link to="/browse">
+          <Button className={classes.button} variant="contained">
+            Order now
+          </Button>
+        </Link>
       </div>
       <div className={classes.right}>
         <img
