@@ -13,6 +13,8 @@ import AddToCart from './AddToCart'
 const useStyles = makeStyles({
   root: {
     width: '100%',
+    marginTop: '2rem',
+    marginBottom: '2rem',
   },
   button: {
     backgroundColor: 'red',
@@ -23,7 +25,7 @@ const useStyles = makeStyles({
     },
   },
   media: {
-    height: 140,
+    height: 70,
   },
 })
 

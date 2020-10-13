@@ -15,11 +15,20 @@ const useStyles = makeStyles({
   },
   button: {
     textAlign: 'center',
+    backgroundColor: 'green',
+    width: '100%',
+    color: 'whitesmoke',
+    '&:hover': {
+      backgroundColor: '#3FC060',
+    },
   },
   container: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+  },
+  link: {
+    width: '80%',
   },
 })
 
@@ -27,18 +36,25 @@ export default function Cart() {
   const [cart, setCart] = useContext(CartContext)
   const classes = useStyles()
   return (
-    <Container>
+    <Container className={classes.container} maxWidth="sm">
       {cart.length === 0 ? (
-        <Container className={classes.container}>
+        <>
           <Typography className={classes.title} variant="h3">
             Your cart is empty
           </Typography>
           <Link to="/browse">
             <Button>Browse</Button>
           </Link>
-        </Container>
+        </>
       ) : (
-        cart.map((item) => <CartItem item={item} key={item.id} />)
+        <>
+          {cart.map((item) => (
+            <CartItem item={item} key={item.id} />
+          ))}
+          <Link className={classes.link} to="checkout">
+            <Button className={classes.button}>Buy now</Button>
+          </Link>
+        </>
       )}
     </Container>
   )

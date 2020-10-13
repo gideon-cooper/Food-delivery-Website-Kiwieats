@@ -5,6 +5,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import Browse from './components/Browse'
 import Cart from './components/Cart'
+import Checkout from './components/Checkout'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './main.scss'
 const App = () => (
@@ -13,6 +14,7 @@ const App = () => (
     <Route exact path="/" component={Home} />
     <Route exact path="/login" component={Login} />
     <Route exact path="/register" component={Register} />
+    <Route exact path="/checkout" component={Checkout} />
     <Route exact path="/cart" component={Cart} />
     <Route exact path="/browse" component={Browse} />
   </Router>
