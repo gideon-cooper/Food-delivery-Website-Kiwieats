@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { loginUser } from '../api'
 import TextField from '@material-ui/core/TextField'
-import { Link } from 'react-router-dom'
+import { Link,Redirect } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
+import { UserContext } from '../Context/UserContext'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -32,16 +33,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function Login() {
+export default function Login(props) {
+  const [user, setUser] = useContext(UserContext)
   const classes = useStyles()
   const [form, setForm] = useState({
     email: '',
-    
   })
   const handleClick = () => {
-    console.log('BUTTOn')
     loginUser(form).then((res) => {
-      console.log('HEY', res)
+      console.log('res', res)
+      setUser(res.user)
+      localStorage.setItem('authToken', res.token)
+      return props.history.push('/')
     })
   }
   const handleChange = (e) => {

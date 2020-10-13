@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container'
-import { StorefrontOutlined } from '@material-ui/icons'
 
 const useStyles = makeStyles((theme) => ({
   home: {
@@ -51,6 +50,7 @@ export default function Home() {
         console.log('HOME API ERROR', error)
       })
   }, [])
+ 
   const classes = useStyles()
   return (
     <Container className={classes.home}>
