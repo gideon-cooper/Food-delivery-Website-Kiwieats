@@ -42,7 +42,10 @@ export default function Nav(props) {
           {localStorage.getItem('authToken') ? (
             <>
               <Link to="/cart">
-                <i class="fas fa-shopping-cart" style={{ color: 'black' }}></i>
+                <i
+                  className="fas fa-shopping-cart"
+                  style={{ color: 'black' }}
+                ></i>
               </Link>
               <Button onClick={handleClick} color="black">
                 Log off

@@ -25,7 +25,7 @@ export default function Browse() {
   return (
     <Container className={classes.browse}>
       {foods.map((food) => (
-        <FoodItem food={food} key={food.id} />
+        <FoodItem food={food} key={food._id} />
       ))}
     </Container>
   )

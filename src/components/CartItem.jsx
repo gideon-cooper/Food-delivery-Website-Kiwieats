@@ -29,10 +29,11 @@ const useStyles = makeStyles({
 
 export default function CartItem(props) {
   const [cart, setCart] = useContext(CartContext)
+  console.log(props.item.id, 'A')
   const classes = useStyles()
   let cartItem = props.food
   const removeCartItem = () => {
-    return setCart(cart.filter((item) => item.id !== props.item.id))
+    return setCart(cart.filter((item) => item._id !== props.item._id))
   }
   return (
     <Card className={classes.root}>
