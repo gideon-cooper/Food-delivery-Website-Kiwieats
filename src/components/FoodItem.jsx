@@ -13,10 +13,15 @@ const useStyles = makeStyles({
   root: {
     width: 345,
     maxWidth: 345,
-    marginRight: '5rem',
+    marginRight: '4rem',
+    marginTop: '2rem',
   },
   media: {
     height: 140,
+  },
+  lower: {
+    display: 'flex',
+    justifyContent: 'space-between',
   },
 })
 
@@ -26,11 +31,7 @@ export default function FoodItem(props) {
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
-        />
+        <CardMedia className={classes.media} image={props.food.image} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {props.food.name}
@@ -40,8 +41,9 @@ export default function FoodItem(props) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
+      <CardActions className={classes.lower}>
         <AddToCart food={props.food} />
+        <p>${props.food.price}</p>
       </CardActions>
     </Card>
   )

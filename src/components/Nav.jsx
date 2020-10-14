@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
     color: 'black',
     flexGrow: 1,
   },
+  button: {
+    marginLeft: '3rem',
+  },
 }))
 
 export default function Nav(props) {
@@ -47,7 +50,7 @@ export default function Nav(props) {
                   style={{ color: 'black' }}
                 ></i>
               </Link>
-              <Button onClick={handleClick} color="black">
+              <Button className={classes.button} onClick={handleClick}>
                 Log off
               </Button>
             </>

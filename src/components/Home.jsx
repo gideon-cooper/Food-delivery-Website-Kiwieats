@@ -11,9 +11,6 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '80vh',
     width: '90%',
     alignItems: 'center',
-    ['@media (max-width:1024px)']: {
-      flexDirection: 'column',
-    },
   },
   title: {
     color: 'green',
@@ -36,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
   right: {
     flex: 2,
     height: '70vh',
+    ['@media (max-width:1024px)']: {
+      display: 'none',
+    },
   },
 }))
 

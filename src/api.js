@@ -17,3 +17,11 @@ export function loginUser(userData) {
       return res.body
     })
 }
+export function registerUser(userData) {
+  return request
+    .post(`${authUrl}register`)
+    .send(userData)
+    .then((res) => {
+      return res.body
+    })
+}

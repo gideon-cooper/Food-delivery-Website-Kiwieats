@@ -7,6 +7,14 @@ import Container from '@material-ui/core/Container'
 const useStyles = makeStyles((theme) => ({
   browse: {
     display: 'flex',
+    flexWrap: 'wrap',
+    ['@media (min-width:501px) and (max-width:1024px)']: {
+      justifyContent: 'center',
+      alignContent: 'center',
+    },
+    ['@media (max-width:500px)']: {
+      display: 'block',
+    },
   },
 }))
 export default function Browse() {

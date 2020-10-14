@@ -12,9 +12,11 @@ import AddToCart from './AddToCart'
 
 const useStyles = makeStyles({
   root: {
-    width: '100%',
-    marginTop: '2rem',
-    marginBottom: '2rem',
+    width: '80%',
+    marginTop: '1rem',
+    ['@media (max-width:500px)']: {
+      width: '100%',
+    },
   },
   button: {
     backgroundColor: 'red',
@@ -25,7 +27,19 @@ const useStyles = makeStyles({
     },
   },
   media: {
-    height: 70,
+    height: 120,
+    width: '100%',
+    flex: 1,
+  },
+  rightMedia: {
+    flex: 2,
+  },
+  lower: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  cartItem: {
+    display: 'flex',
   },
 })
 
@@ -39,13 +53,9 @@ export default function CartItem(props) {
   }
   return (
     <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
-        />
-        <CardContent>
+      <CardActionArea className={classes.cartItem}>
+        <CardMedia className={classes.media} image={props.item.image} />
+        <CardContent className={classes.rightMedia}>
           <Typography gutterBottom variant="h5" component="h2">
             {props.item.name}
           </Typography>
@@ -54,7 +64,7 @@ export default function CartItem(props) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
+      <CardActions className={classes.lower}>
         <Button
           onClick={removeCartItem}
           className={classes.button}
@@ -62,6 +72,7 @@ export default function CartItem(props) {
         >
           remove
         </Button>
+        <p>${props.item.price}</p>
       </CardActions>
     </Card>
   )
