@@ -32,6 +32,7 @@ export default function Nav(props) {
   const handleClick = () => {
     localStorage.removeItem('authToken')
     setUser({ name: '', email: '', id: '' })
+    window.location.reload()
   }
   return (
     <div className={classes.root}>

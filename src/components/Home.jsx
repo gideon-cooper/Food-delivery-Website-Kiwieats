@@ -48,11 +48,19 @@ export default function Home() {
         <Typography className={classes.title} variant="h2">
           Delivered now
         </Typography>
-        <Link to="/browse">
-          <Button className={classes.button} variant="contained">
-            Order now
-          </Button>
-        </Link>
+        {localStorage.getItem('authToken') ? (
+          <Link to="/browse">
+            <Button className={classes.button} variant="contained">
+              Order now
+            </Button>
+          </Link>
+        ) : (
+          <Link to="/login">
+            <Button className={classes.button} variant="contained">
+              Order now
+            </Button>
+          </Link>
+        )}
       </div>
       <div className={classes.right}>
         <img

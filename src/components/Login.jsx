@@ -43,7 +43,8 @@ export default function Login(props) {
     loginUser(form).then((res) => {
       setUser(res.user)
       localStorage.setItem('authToken', res.token)
-      return props.history.push('/')
+      props.history.push('/')
+      window.location.reload()
     })
   }
   const handleChange = (e) => {
