@@ -3,9 +3,7 @@ const rootUrl = 'http://localhost:3001/api/v1/kiwi'
 const authUrl = 'http://localhost:3001/api/v1/'
 
 export function getFood() {
-  console.log('YOOOO')
   return request.get(rootUrl).then((res) => {
-    console.log('RES', res.body)
     return res.body
   })
 }
@@ -15,7 +13,7 @@ export function loginUser(userData) {
     .send(userData)
     .then((res) => {
       return res.body
-    })
+    }).catch((error) => console.log("ERROR: ", error))
 }
 export function registerUser(userData) {
   return request

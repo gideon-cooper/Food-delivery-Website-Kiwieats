@@ -40,7 +40,6 @@ export default function SignUp(props) {
   })
   const handleClick = () => {
     registerUser(form).then(() => {
-      console.log('HEYYYYYY')
       return props.history.push('/')
     })
   }
@@ -52,66 +51,66 @@ export default function SignUp(props) {
     })
   }
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component='main' maxWidth='xs'>
       <CssBaseline />
       <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
+        <Typography component='h1' variant='h5'>
           Register
         </Typography>
 
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField
-              autoComplete="fname"
-              name="name"
-              variant="outlined"
+              autoComplete='fname'
+              name='name'
+              variant='outlined'
               onChange={handleChange}
               required
               fullWidth
-              id="firstName"
-              label="First Name"
+              id='firstName'
+              label='First Name'
               autoFocus
             />
           </Grid>
           <Grid item xs={12}>
             <TextField
-              variant="outlined"
+              variant='outlined'
               required
               onChange={handleChange}
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id='email'
+              label='Email Address'
+              name='email'
+              autoComplete='email'
             />
           </Grid>
           <Grid item xs={12}>
             <TextField
-              variant="outlined"
+              variant='outlined'
               required
               onChange={handleChange}
               fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
+              name='password'
+              label='Password'
+              type='password'
+              id='password'
+              autoComplete='current-password'
             />
           </Grid>
         </Grid>
         <Button
-          type="submit"
+          type='submit'
           fullWidth
-          variant="contained"
-          color="primary"
+          variant='contained'
+          color='primary'
           onClick={handleClick}
           className={classes.submit}
         >
           Register
         </Button>
-        <Grid container justify="flex-end">
+        <Grid container justify='flex-end'>
           <Grid item>
-            <Link to="/login" variant="body2">
+            <Link to='/login' variant='body2'>
               Already have an account? Login
             </Link>
           </Grid>
