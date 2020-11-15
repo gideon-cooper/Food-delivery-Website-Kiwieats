@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
 import { CartContext } from '../Context/CartContext'
 const useStyles = makeStyles((theme) => ({
@@ -32,11 +32,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Nav(props) {
   const classes = useStyles()
+  const history = useHistory()
   const [user, setUser] = useContext(UserContext)
   const [cart, setCart] = useContext(CartContext)
   const handleClick = () => {
     localStorage.removeItem('authToken')
     setUser({ name: '', email: '', id: '' })
+    history.push('/')
     window.location.reload()
   }
   return (
