@@ -39,13 +39,14 @@ export default function Login(props) {
   const [form, setForm] = useState({
     email: '',
   })
-  const handleClick = () => {
+  console.log(props)
+  const handleClick = (event) => {
+    event.preventDefault()
     loginUser(form)
       .then((res) => {
-        console.log('HITT', res)
         setUser(res.user)
         localStorage.setItem('authToken', res.token)
-        props.history.push('/')
+        props.history.push('/browse')
         window.location.reload()
       })
       .catch((error) => console.log('error', error))
@@ -63,41 +64,39 @@ export default function Login(props) {
         <Typography component='h1' variant='h5'>
           Login
         </Typography>
+        <form onSubmit={handleClick}>
+          <TextField
+            variant='outlined'
+            margin='normal'
+            onChange={handleChange}
+            required
+            fullWidth
+            id='email'
+            type='email'
+            label='Email Address'
+            name='email'
+          />
+          <TextField
+            variant='outlined'
+            margin='normal'
+            required
+            fullWidth
+            name='password'
+            label='Password'
+            type='password'
+            id='password'
+          />
 
-        <TextField
-          variant='outlined'
-          margin='normal'
-          onChange={handleChange}
-          required
-          fullWidth
-          id='email'
-          label='Email Address'
-          name='email'
-          autoComplete='email'
-          autoFocus
-        />
-        <TextField
-          variant='outlined'
-          margin='normal'
-          required
-          fullWidth
-          name='password'
-          label='Password'
-          type='password'
-          id='password'
-          autoComplete='current-password'
-        />
-
-        <Button
-          type='submit'
-          onClick={() => handleClick()}
-          fullWidth
-          variant='contained'
-          color='primary'
-          className={classes.submit}
-        >
-          Login
-        </Button>
+          <Button
+            type='submit'
+            fullWidth
+            variant='contained'
+            color='primary'
+            className={classes.submit}
+          >
+            Login
+          </Button>
+        </form>
         <Grid container>
           <Grid item>
             <Link to='/register' variant='body2'>

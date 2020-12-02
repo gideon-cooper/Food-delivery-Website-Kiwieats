@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField'
 import { Link } from 'react-router-dom'
 import { registerUser } from '../api'
 import Grid from '@material-ui/core/Grid'
+import { FormControl } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
@@ -38,7 +39,8 @@ export default function SignUp(props) {
     password: '',
     email: '',
   })
-  const handleClick = () => {
+  const handleClick = (event) => {
+    event.preventDefault()
     registerUser(form).then(() => {
       return props.history.push('/')
     })
@@ -57,57 +59,57 @@ export default function SignUp(props) {
         <Typography component='h1' variant='h5'>
           Register
         </Typography>
+        <form onSubmit={handleClick}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                name='name'
+                variant='outlined'
+                onChange={handleChange}
+                required
+                fullWidth
+                id='firstName'
+                label='First Name'
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant='outlined'
+                required
+                onChange={handleChange}
+                fullWidth
+                id='email'
+                label='Email Address'
+                name='email'
+                type='email'
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant='outlined'
+                required
+                onChange={handleChange}
+                fullWidth
+                name='password'
+                label='Password'
+                type='password'
+                id='password'
+                autoComplete='current-password'
+              />
+            </Grid>
+          </Grid>
 
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <TextField
-              autoComplete='fname'
-              name='name'
-              variant='outlined'
-              onChange={handleChange}
-              required
-              fullWidth
-              id='firstName'
-              label='First Name'
-              autoFocus
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              variant='outlined'
-              required
-              onChange={handleChange}
-              fullWidth
-              id='email'
-              label='Email Address'
-              name='email'
-              autoComplete='email'
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              variant='outlined'
-              required
-              onChange={handleChange}
-              fullWidth
-              name='password'
-              label='Password'
-              type='password'
-              id='password'
-              autoComplete='current-password'
-            />
-          </Grid>
-        </Grid>
-        <Button
-          type='submit'
-          fullWidth
-          variant='contained'
-          color='primary'
-          onClick={handleClick}
-          className={classes.submit}
-        >
-          Register
-        </Button>
+          <Button
+            type='submit'
+            fullWidth
+            variant='contained'
+            color='primary'
+            className={classes.submit}
+          >
+            Register
+          </Button>
+        </form>
         <Grid container justify='flex-end'>
           <Grid item>
             <Link to='/login' variant='body2'>
